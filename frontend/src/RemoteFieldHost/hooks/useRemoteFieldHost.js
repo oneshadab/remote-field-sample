@@ -8,7 +8,7 @@ import useEvent from "../hooks/useEvent";
  * @param {{onMessage: HostChannel['onMessage']}} options
  * @returns
  */
-export default function useHostChannel(
+export default function useRemoteFieldHost(
     options = {},
 ) {
     const onMessage = useEvent(options.onMessage);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useHostChannel } from "./HostChannel";
+import { useRemoteFieldHost } from "./RemoteFieldHost";
 
 const API_URL = "https://chub.uat.stg-01.micontenthub.com/api/countries";
 
@@ -20,17 +20,17 @@ const CountryDropdownEditor = () => {
       });
   }, []);
 
-  const hostChannel = useHostChannel({
+  const remoteFieldHost = useRemoteFieldHost({
     onMessage(message) {
       switch (message.type) {
         case "connected":
-          hostChannel.sendMessage({
+          remoteFieldHost.sendMessage({
             type: "set:style",
             payload: {
               height: "350px",
             },
           });
-          hostChannel.sendMessage({
+          remoteFieldHost.sendMessage({
             type: "get:field-value",
           });
           break;
@@ -48,7 +48,7 @@ const CountryDropdownEditor = () => {
   const handleChange = (event) => {
     const value = event.target.value;
     setSelectedCountry(value);
-    hostChannel.sendMessage({
+    remoteFieldHost.sendMessage({
       type: "set:field-value",
       data: { selectedCountry: value },
     });

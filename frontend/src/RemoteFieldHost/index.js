@@ -1,9 +1,9 @@
 import useEvent from "./hooks/useEvent";
-import useHostChannel from "./hooks/useHostChannel";
+import useRemoteFieldHost from "./hooks/useRemoteFieldHost";
 import HostChannel from "./utils/HostChannel";
 
 export {
     useEvent,
-    useHostChannel,
+    useRemoteFieldHost,
     HostChannel
 }
