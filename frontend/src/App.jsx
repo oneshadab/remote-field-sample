@@ -2,21 +2,16 @@ import { useState, useEffect } from "react";
 
 import { useRemoteFieldHost } from "./RemoteFieldHost";
 
-const API_URL = "https://chub.uat.stg-01.micontenthub.com/api/countries";
 
 const CountryDropdownEditor = () => {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
   useEffect(() => {
-    fetch(API_URL)
+    fetch('/api/countries')
       .then((response) => response.json())
       .then(({ response: { results } }) => {
-        setCountries(
-          results.map((country) => {
-            return { value: country.code, label: country.name };
-          })
-        );
+        setCountries(results);
       });
   }, []);
 
